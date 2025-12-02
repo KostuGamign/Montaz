@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kacper «Kostu» – Portfolio montażysty</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    body { margin: 0; background: #0b0d10; color: #d9e3ff; font-family: "Rajdhani", sans-serif; overflow-x: hidden; }
+
+    h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(45px, 6vw, 95px);
+        text-align: center;
+        margin-top: 70px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #e3e7ff;
+    }
+
+    .subinfo { text-align: center; font-size: clamp(18px, 2.2vw, 30px); margin-top: 10px; opacity: .85; }
+
+    .section { max-width: 1100px; margin: 110px auto; padding: 0 20px; text-align: center; }
+
+    .highlight { color: #00d0ff; font-weight: 700; }
+
+    .frame {
+        border: 2px solid #00d0ff; padding: 30px; border-radius: 14px;
+        background: rgba(0, 255, 255, 0.05); box-shadow: 0 0 15px rgba(0, 221, 255, 0.4);
+        max-width: 900px; margin: 50px auto; backdrop-filter: blur(6px);
+    }
+
+    /* TWÓRCY */
+    .carousel { margin-top: 65px; white-space: nowrap; overflow: hidden; position: relative; }
+    .track { display: inline-flex; gap: 65px; animation: slide 18s linear infinite; }
+    @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    a { text-decoration: none; color: inherit; }
+    a:visited, a:active, a:hover { color: #00d0ff; }
+
+    .person {
+        text-align: center;
+        width: 160px;
+        flex-shrink: 0;
+        transition: .25s;
+        color: #00d0ff;
+    }
+    .person:hover { transform: scale(1.12); filter: drop-shadow(0 0 12px #00eaff); }
+
+    .person img {
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #06080b;
+        padding: 4px;
+        border: 3px solid #00d0ff;
+        box-shadow: 0 0 15px rgba(0, 221, 255, 0.4);
+    }
+
+    .person span {
+        display: block;
+        margin-top: 10px;
+        font-size: 20px;
+        color: #00d0ff;
+    }
+
+    @media (max-width: 600px) {
+        .person img { width: 120px; height: 120px; }
+        .person { width: 120px; }
+    }
+
+    /* PASEK % */
+    .progress-wrapper { max-width: 650px; margin: 0 auto; margin-top: 45px; }
+    .progress-label { font-size: 22px; margin-bottom: 10px; text-align: center; letter-spacing: 1px; }
+    .progress-bar {
+        width: 100%; height: 34px; border: 2px solid #00d0ff; border-radius: 8px;
+        overflow: hidden; background: rgba(0, 255, 255, 0.06);
+        box-shadow: 0 0 10px rgba(0, 221, 255, .3);
+    }
+    .progress-fill {
+        width: 0%; height: 100%;
+        background: linear-gradient(90deg, #00eaff, #0088ff);
+        box-shadow: inset 0 0 18px rgba(0, 221, 255, .7);
+        transition: width 2.5s ease;
+    }
+
+    /* SOCIAL MEDIA */
+    .socials {
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        margin-top: 60px;
+        flex-wrap: wrap;
+    }
+
+    .social {
+        text-align: center;
+        cursor: pointer;
+        transition: .2s;
+        width: 160px;
+    }
+    .social:hover { transform: scale(1.12); filter: drop-shadow(0 0 12px #00eaff); }
+
+    .social img { width: 70px; height: 70px; margin: auto; display: block; }
+    .social span { display: block; font-size: 18px; opacity: .7; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<h1>KACPER «KOSTU»</h1>
+<div class="subinfo">Gotowy na film, który zapiera dech w piersiach? Ze mną Twoja wizja nabierze realnych kształtów, wzbogacona o jakość i kreatywność na najwyższym poziomie. — <span class="highlight">Jesteś we właściwym miejscu!</span></div>
+
+<!-- CZYM SIĘ ZAJMUJĘ -->
+<section class="section">
+    <h2 style="font-size:45px; margin-bottom:25px;">Czym się zajmuję</h2>
+    <div class="frame">
+        <h3 style="font-size:36px; margin-bottom:18px;">Montaż</h3>
+        <p style="font-size:22px; line-height:1.55; opacity:.93;">
+            Tworzę montaż, który <span class="highlight">podnosi wartość materiału</span> – buduję tempo,
+            emocje i narrację tak, aby widz nie tylko obejrzał film do końca, ale żeby go zapamiętał.
+            Każdy kadr i każdy dźwięk dobieram świadomie, bo dobrze wykonany montaż
+            <span class="highlight">nie pokazuje historii — on ją buduje</span>.
+            Jeśli chcesz, żeby Twój film wyglądał <span class="highlight">profesjonalnie</span> i robił wrażenie od pierwszych sekund,
+            zajmę się tym od A do Z.
+        </p>
+    </div>
+</section>
+
+<!-- WSPÓŁPRACOWAŁEM Z -->
+<section class="section">
+    <h2 style="font-size:45px; margin-bottom:5px;">Współpracowałem z</h2>
+    <div class="carousel">
+        <div class="track">
+            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
+            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
+            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
+            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+
+            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
+            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
+            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
+            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+        </div>
+    </div>
+</section>
+
+<!-- PASEK 100% KLIENTÓW -->
+<section class="section" id="stats">
+    <h2 style="font-size:42px; text-align:center; margin-bottom:35px;">
+        Montażem zajmuję się już <span class="highlight">5 lat</span>
+    </h2>
+    <div class="progress-wrapper">
+        <div class="progress-label">100% zadowolonych klientów</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section">
+    <h2 style="font-size:45px; margin-bottom:35px;">Zainteresowany?</h2>
+    <p style="font-size:23px; opacity:.85; margin-bottom:40px;">Skontaktuj się ze mną tutaj</p>
+
+    <div class="socials">
+        <div class="social" onclick="copyToClipboard('kostugaming')">
+            <img src="discord.png"><span>kostugaming</span>
+        </div>
+        <a class="social" href="https://www.instagram.com/kostu.montage/" target="_blank">
+            <img src="instagram.png"><span>kostu.montage</span>
+        </a>
+        <div class="social" onclick="copyToClipboard('kacperburchardd@gmail.com')">
+            <img src="gmail.png"><span>kacperburchardd@gmail.com</span>
+        </div>
+    </div>
+</section>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text);
+        alert("Skopiowano: " + text);
+    }
+
+    // Pasek % ładuje się dopiero po przewinięciu
+    const progress = document.getElementById("progress");
+    const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            progress.style.width = "100%";
+            observer.disconnect();
+        }
+    });
+    observer.observe(document.getElementById("stats"));
+</script>
+
+</body>
+</html>
