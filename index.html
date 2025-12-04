@@ -1,5 +1,3 @@
-<!-- Updated HTML with clickable thumbnail and animated counters -->
-<!-- I will insert complete code including your existing structure -->
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -32,10 +30,25 @@
         max-width: 900px; margin: 50px auto; backdrop-filter: blur(6px);
     }
 
-    /* TWÓRCY */
-    .carousel { margin-top: 65px; white-space: nowrap; overflow: hidden; position: relative; }
-    .track { display: inline-flex; gap: 65px; animation: slide 18s linear infinite; }
-    @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    /* KARUZELA TWÓRCÓW — NAPRAWIONA */
+    .carousel {
+        margin-top: 65px;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .track {
+        display: inline-flex;
+        gap: 65px;
+        animation: slide 22s linear infinite;
+        will-change: transform;
+    }
+
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
 
     a { text-decoration: none; color: inherit; }
     a:visited, a:active, a:hover { color: #00d0ff; }
@@ -46,6 +59,7 @@
         flex-shrink: 0;
         transition: .25s;
         color: #00d0ff;
+        overflow: visible !important; /* FIX – nic się nie ucina */
     }
     .person:hover { transform: scale(1.12); filter: drop-shadow(0 0 12px #00eaff); }
 
@@ -64,6 +78,11 @@
         margin-top: 10px;
         font-size: 20px;
         color: #00d0ff;
+    }
+
+    @media (max-width: 600px) {
+        .person img { width: 120px; height: 120px; }
+        .person { width: 120px; }
     }
 
     /* PASEK % */
@@ -101,52 +120,53 @@
     .social img { width: 70px; height: 70px; margin: auto; display: block; }
     .social span { display: block; font-size: 18px; opacity: .7; margin-top: 8px; }
 
-    /* MINIATURKA SEKTION */
-    .video-showcase {
+    /* NOWA SEKCJA MINIATURKI */
+    .mini-section {
+        max-width: 1100px;
+        margin: 120px auto;
+        padding: 0 20px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 40px;
+        gap: 35px;
         opacity: 0;
         transform: translateY(40px);
         transition: 1s ease;
-        margin-bottom: 80px;
     }
 
-    .video-showcase.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .thumbnail {
+    .mini-thumb {
         width: 420px;
-        border-radius: 16px;
+        border-radius: 18px;
         cursor: pointer;
-        transition: .3s;
+        transition: .25s;
+        object-fit: cover;
         box-shadow: 0 0 18px rgba(0, 221, 255, .35);
     }
+    .mini-thumb:hover { transform: scale(1.03); }
 
-    .thumbnail:hover {
-        transform: scale(1.03);
-        box-shadow: 0 0 25px rgba(0, 221, 255, .55);
-    }
-
-    .stats-text {
-        text-align: left;
+    .mini-stats {
         font-size: 22px;
-        line-height: 1.5;
+        margin-top: 12px;
     }
 
-    .counter {
-        font-size: 26px;
-        margin-top: 10px;
-        color: #00d0ff;
+    .mini-stats span { display: block; margin-top: 5px; }
+
+    .mini-text { font-size: 25px; line-height: 1.5; max-width: 500px; }
+
+    .grow-number {
         font-weight: 700;
+        color: #00d0ff;
+        font-size: 26px;
+    }
+
+    @media (max-width: 900px) {
+        .mini-section { flex-direction: column; text-align: center; }
+        .mini-thumb { width: 95%; }
     }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <h1>KACPER «KOSTU»</h1>
 
 <!-- CZYM SIĘ ZAJMUJĘ -->
@@ -157,19 +177,21 @@
         <p style="font-size:22px; line-height:1.55; opacity:.93;">
             Tworzę montaż, który <span class="highlight">podnosi wartość materiału</span> – buduję tempo,
             emocje i narrację tak, aby widz nie tylko obejrzał film do końca, ale żeby go zapamiętał.
-            Każdy kadr i każdy dźwięk dobieram świadomie, bo dobrze wykonany montaż
-            <span class="highlight">nie pokazuje historii — on ją buduje</span>.
-            Jeśli chcesz, żeby Twój film wyglądał <span class="highlight">profesjonalnie</span> i robił wrażenie od pierwszych sekund,
-            zajmę się tym od A do Z.
         </p>
     </div>
 </section>
 
-<!-- TWÓRCY -->
+<!-- WSPÓŁPRACOWAŁEM Z -->
 <section class="section">
     <h2 style="font-size:45px; margin-bottom:5px;">Współpracowałem z</h2>
     <div class="carousel">
         <div class="track">
+            <!-- zestaw 1 -->
+            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
+            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
+            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
+            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+            <!-- zestaw 2 -->
             <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
             <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
             <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
@@ -189,18 +211,19 @@
     </div>
 </section>
 
-<!-- MINIATURKA + OPIS -->
-<section class="section">
-    <div class="video-showcase" id="videoShowcase">
-        <img class="thumbnail" src="miniaturka.png" onclick="window.open('https://youtu.be/r1wuFMMSHf0', '_blank')">
+<!-- NOWA SEKCJA MINIATURKI -->
+<section class="mini-section" id="mini">
+    <img class="mini-thumb" src="miniaturka.png" onclick="window.open('https://youtu.be/r1wuFMMSHf0','_blank')">
 
-        <div class="stats-text">
-            <div class="counter">👁️ <span id="views">0</span></div>
-            <div class="counter">👍 <span id="likes">0</span></div>
-            <p style="margin-top:20px; font-size:22px; max-width:400px;">
-                Ten materiał został wykonany, nagrany i zmontowany w 100% przeze mnie — od A do Z.
-            </p>
+    <div>
+        <div class="mini-stats">
+            <span><span id="views" class="grow-number">0</span> 👁️ wyświetleń</span>
+            <span><span id="likes" class="grow-number">0</span> 👍 polubień</span>
         </div>
+
+        <p class="mini-text">
+            Ten film został w 100% napisany, nagrany i zmontowany przeze mnie (prawie 3 lata temu) — od surowego materiału po finalny efekt.
+        </p>
     </div>
 </section>
 
@@ -228,6 +251,7 @@
         alert("Skopiowano: " + text);
     }
 
+    /* Pasek % */
     const progress = document.getElementById("progress");
     const observer = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
@@ -237,39 +261,44 @@
     });
     observer.observe(document.getElementById("stats"));
 
-    // SHOWCASE ANIMACJA + LICZNIKI
-    const showcase = document.getElementById("videoShowcase");
-    const viewsEl = document.getElementById("views");
-    const likesEl = document.getElementById("likes");
-
-    const targetViews = 582000;
-    const targetLikes = 10000;
-
-    const showcaseObserver = new IntersectionObserver(entries => {
+    /* Pokazywanie miniaturki */
+    const mini = document.getElementById("mini");
+    const miniObs = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
-            showcase.classList.add("visible");
-            animateCounter(viewsEl, targetViews);
-            animateCounter(likesEl, targetLikes);
-            showcaseObserver.disconnect();
+            mini.style.opacity = "1";
+            mini.style.transform = "translateY(0)";
+            miniObs.disconnect();
+        }
+    });
+    miniObs.observe(mini);
+
+    /* ANIMOWANE LICZNIKI */
+    function animateNumber(id, target, duration = 2000) {
+        const el = document.getElementById(id);
+        let start = 0;
+        const increment = target / (duration / 16);
+
+        function update() {
+            start += increment;
+            if (start >= target) {
+                el.textContent = target.toLocaleString();
+            } else {
+                el.textContent = Math.floor(start).toLocaleString();
+                requestAnimationFrame(update);
+            }
+        }
+        update();
+    }
+
+    const numbersObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            animateNumber("views", 582000);
+            animateNumber("likes", 10000);
+            numbersObs.disconnect();
         }
     });
 
-    showcaseObserver.observe(showcase);
-
-    function animateCounter(element, target) {
-        let current = 0;
-        const duration = 1500;
-        const stepTime = Math.max(5, duration / target);
-
-        const interval = setInterval(() => {
-            current += Math.ceil(target / (duration / stepTime));
-            if (current >= target) {
-                current = target;
-                clearInterval(interval);
-            }
-            element.textContent = current.toLocaleString('pl-PL');
-        }, stepTime);
-    }
+    numbersObs.observe(mini);
 </script>
 
 </body>
