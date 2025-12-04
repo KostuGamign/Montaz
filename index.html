@@ -1,3 +1,5 @@
+<!-- Updated HTML with clickable thumbnail and animated counters -->
+<!-- I will insert complete code including your existing structure -->
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -64,11 +66,6 @@
         color: #00d0ff;
     }
 
-    @media (max-width: 600px) {
-        .person img { width: 120px; height: 120px; }
-        .person { width: 120px; }
-    }
-
     /* PASEK % */
     .progress-wrapper { max-width: 650px; margin: 0 auto; margin-top: 45px; }
     .progress-label { font-size: 22px; margin-bottom: 10px; text-align: center; letter-spacing: 1px; }
@@ -103,13 +100,55 @@
 
     .social img { width: 70px; height: 70px; margin: auto; display: block; }
     .social span { display: block; font-size: 18px; opacity: .7; margin-top: 8px; }
+
+    /* MINIATURKA SEKTION */
+    .video-showcase {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 1s ease;
+        margin-bottom: 80px;
+    }
+
+    .video-showcase.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .thumbnail {
+        width: 420px;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: .3s;
+        box-shadow: 0 0 18px rgba(0, 221, 255, .35);
+    }
+
+    .thumbnail:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px rgba(0, 221, 255, .55);
+    }
+
+    .stats-text {
+        text-align: left;
+        font-size: 22px;
+        line-height: 1.5;
+    }
+
+    .counter {
+        font-size: 26px;
+        margin-top: 10px;
+        color: #00d0ff;
+        font-weight: 700;
+    }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <h1>KACPER «KOSTU»</h1>
-<div class="subinfo">Gotowy na film, który zapiera dech w piersiach? Ze mną Twoja wizja nabierze realnych kształtów, wzbogacona o jakość i kreatywność na najwyższym poziomie. — <span class="highlight">Jesteś we właściwym miejscu!</span></div>
+<div class="subinfo">Montażem zajmuję się już 5 lat — <span class="highlight">100% zadowolonych klientów</span></div>
 
 <!-- CZYM SIĘ ZAJMUJĘ -->
 <section class="section">
@@ -127,16 +166,11 @@
     </div>
 </section>
 
-<!-- WSPÓŁPRACOWAŁEM Z -->
+<!-- TWÓRCY -->
 <section class="section">
     <h2 style="font-size:45px; margin-bottom:5px;">Współpracowałem z</h2>
     <div class="carousel">
         <div class="track">
-            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
-            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
-            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
-            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
-
             <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
             <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
             <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
@@ -153,6 +187,21 @@
     <div class="progress-wrapper">
         <div class="progress-label">100% zadowolonych klientów</div>
         <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    </div>
+</section>
+
+<!-- MINIATURKA + OPIS -->
+<section class="section">
+    <div class="video-showcase" id="videoShowcase">
+        <img class="thumbnail" src="miniaturka.png" onclick="window.open('https://youtu.be/r1wuFMMSHf0', '_blank')">
+
+        <div class="stats-text">
+            <div class="counter">👁️ <span id="views">0</span></div>
+            <div class="counter">👍 <span id="likes">0</span></div>
+            <p style="margin-top:20px; font-size:22px; max-width:400px;">
+                Ten materiał został wykonany, nagrany i zmontowany w 100% przeze mnie — od A do Z.
+            </p>
+        </div>
     </div>
 </section>
 
@@ -180,7 +229,6 @@
         alert("Skopiowano: " + text);
     }
 
-    // Pasek % ładuje się dopiero po przewinięciu
     const progress = document.getElementById("progress");
     const observer = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
@@ -189,6 +237,40 @@
         }
     });
     observer.observe(document.getElementById("stats"));
+
+    // SHOWCASE ANIMACJA + LICZNIKI
+    const showcase = document.getElementById("videoShowcase");
+    const viewsEl = document.getElementById("views");
+    const likesEl = document.getElementById("likes");
+
+    const targetViews = 582000;
+    const targetLikes = 10000;
+
+    const showcaseObserver = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            showcase.classList.add("visible");
+            animateCounter(viewsEl, targetViews);
+            animateCounter(likesEl, targetLikes);
+            showcaseObserver.disconnect();
+        }
+    });
+
+    showcaseObserver.observe(showcase);
+
+    function animateCounter(element, target) {
+        let current = 0;
+        const duration = 1500;
+        const stepTime = Math.max(5, duration / target);
+
+        const interval = setInterval(() => {
+            current += Math.ceil(target / (duration / stepTime));
+            if (current >= target) {
+                current = target;
+                clearInterval(interval);
+            }
+            element.textContent = current.toLocaleString('pl-PL');
+        }, stepTime);
+    }
 </script>
 
 </body>
