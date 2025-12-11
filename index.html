@@ -30,12 +30,19 @@
         max-width: 900px; margin: 50px auto; backdrop-filter: blur(6px);
     }
 
-    /* KARUZELA TWÓRCÓW — NAPRAWIONA */
+    /* MASKA KARUZELI */
+    .carousel-mask {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    /* KARUZELA TWÓRCÓW */
     .carousel {
         margin-top: 65px;
         white-space: nowrap;
-        overflow: hidden;
         position: relative;
+        overflow: visible; /* <<< NIC NIE UCINA TWÓRCÓW */
     }
 
     .track {
@@ -59,15 +66,20 @@
         flex-shrink: 0;
         transition: .25s;
         color: #00d0ff;
-        overflow: visible !important; /* FIX – nic się nie ucina */
+        overflow: visible !important;
+        position: relative;
+        z-index: 10;
     }
-    .person:hover { transform: scale(1.12); filter: drop-shadow(0 0 12px #00eaff); }
+    .person:hover {
+        transform: scale(1.16);
+        filter: drop-shadow(0 0 15px #00eaff);
+        z-index: 20; /* <<< NAD MASKĄ */
+    }
 
     .person img {
         width: 160px; height: 160px;
         border-radius: 50%;
         object-fit: cover;
-        background: #06080b;
         padding: 4px;
         border: 3px solid #00d0ff;
         box-shadow: 0 0 15px rgba(0, 221, 255, 0.4);
@@ -120,7 +132,7 @@
     .social img { width: 70px; height: 70px; margin: auto; display: block; }
     .social span { display: block; font-size: 18px; opacity: .7; margin-top: 8px; }
 
-    /* NOWA SEKCJA MINIATURKI */
+    /* MINIATURKA */
     .mini-section {
         max-width: 1100px;
         margin: 120px auto;
@@ -184,20 +196,27 @@
 <!-- WSPÓŁPRACOWAŁEM Z -->
 <section class="section">
     <h2 style="font-size:45px; margin-bottom:5px;">Współpracowałem z</h2>
-    <div class="carousel">
-        <div class="track">
-            <!-- zestaw 1 -->
-            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
-            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
-            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
-            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
-            <!-- zestaw 2 -->
-            <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
-            <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
-            <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
-            <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+
+    <div class="carousel-mask">
+        <div class="carousel">
+            <div class="track">
+                <!-- zestaw 1 -->
+                <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
+                <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
+                <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
+                <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+                <a href="https://www.youtube.com/@cpotworek" target="_blank"><div class="person"><img src="Tworca5.png"><span>Cpotworek</span></div></a>
+
+                <!-- zestaw 2 -->
+                <a href="https://www.youtube.com/@AutomattPL" target="_blank"><div class="person"><img src="Tworca1.png"><span>AutomattPL</span></div></a>
+                <a href="https://www.youtube.com/@SzeryX" target="_blank"><div class="person"><img src="Tworca2.png"><span>Szery</span></div></a>
+                <a href="https://www.youtube.com/@TestostEryk" target="_blank"><div class="person"><img src="Tworca3.png"><span>Testosteryk</span></div></a>
+                <a href="https://www.youtube.com/@KostuGaming" target="_blank"><div class="person"><img src="Tworca4.png"><span>KostuGaming</span></div></a>
+                <a href="https://www.youtube.com/@cpotworek" target="_blank"><div class="person"><img src="Tworca5.png"><span>Potworek</span></div></a>
+            </div>
         </div>
     </div>
+
 </section>
 
 <!-- PASEK 100% KLIENTÓW -->
@@ -211,7 +230,7 @@
     </div>
 </section>
 
-<!-- NOWA SEKCJA MINIATURKI -->
+<!-- MINIATURKA -->
 <section class="mini-section" id="mini">
     <img class="mini-thumb" src="miniaturka.png" onclick="window.open('https://youtu.be/r1wuFMMSHf0','_blank')">
 
@@ -222,7 +241,7 @@
         </div>
 
         <p class="mini-text">
-            Ten film został w 100% napisany, nagrany i zmontowany przeze mnie (prawie 3 lata temu) — od surowego materiału po finalny efekt.
+            Ten film został w 100% napisany, nagrany i zmontowany przeze mnie — od surowego materiału po finalny efekt.
         </p>
     </div>
 </section>
